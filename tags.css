@@ -1,77 +1,71 @@
+/* Included on 26 April 2013 by @janpaul123 from https://raw.github.com/bastianallgeier/Tags */
+
 /* autocomplete style */
 .autocomplete {
   position: absolute;
-  padding-top: 5px;
-  z-index: 1000;
+  z-index: 100000;
 }
-.autocomplete * {
-  padding: 0;
-  margin: 0;
-}
-.autocomplete ul:before {
-  position: absolute;
-  top: -5px;
-  left: 10px;
-  content: "";
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #222;
-}
+
 .autocomplete ul {
   position: relative;
-  padding: 4px;
-  background: #222;
-  color: #fff;
+  padding: 7px 0;
+  margin: 0;
   min-width: 150px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: rgba(0,0,0, .1) 0px 3px 5px;
-  -moz-box-shadow: rgba(0,0,0, .1) 0px 3px 5px;
-  box-shadow: rgba(0,0,0, .1) 0px 3px 5px;
 }
+
 .autocomplete li {
   list-style: none;
   text-align: left;
   padding: 4px 50px 4px 10px;
+  margin: 0;
   cursor: pointer;
-  margin-bottom: 1px;
-  background: #333;
-}
-.autocomplete li:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-.autocomplete li.selected,
-.autocomplete li.over {
-  background: red;
-  color: #fff;  
+  font-size: 13px;
+  line-height: 20px;
 }
 
+.autocomplete li.selected,
+.autocomplete li.over {
+  background-color: gray;
+  color: white;
+}
 
 /* tagbox styles */
 .tagbox {
   position: relative;
   overflow: hidden;
   background: #f9f9f9;
-  border: 1px solid #ddd;
+  cursor: text;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: #fff 0px 1px 0px;
   -moz-box-shadow: #fff 0px 1px 0px;
   box-shadow: #fff 0px 1px 0px;
+
+  /* Copied from bootstrap.css */
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
 }
+
 .tagbox * {
   margin: 0;
   padding: 0;
 }
+
 .tagbox.focus{  
+  /* Copied from bootstrap.css */
+  border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
+
 .tagbox ul {
   overflow: hidden;
-  padding: 10px 10px 6px 10px;
+  padding: 4px 6px 0;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -79,6 +73,7 @@
   -moz-box-shadow: rgba(0,0,0,.07) 0px 2px 4px inset;
   box-shadow: rgba(0,0,0,.07) 0px 2px 4px inset;
 }
+
 .tagbox li {
   position: relative;
   list-style: none;
@@ -86,7 +81,9 @@
   cursor: pointer;
   margin: 0 4px 4px 0;
 }
-.tagbox li.new input {
+
+.tagbox li.new input,
+.tagbox li.new input:focus {
   font-family: Arial, sans-serif;
   border: none;
   display: block;
@@ -94,43 +91,71 @@
   line-height: 20px;
   font-size: 12px;
   background: none;
-}
-.tagbox li.new input:focus {
   outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: 200px;
+  margin-bottom: 0;
 }
+
 .tagbox li .tag {
   position: relative;
   display: block;
-  background: #222;
-  color: #fff;
-  border-radius: 20px;
-  height: 20px;
+  background: gray;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  min-height: 20px;
   line-height: 20px;
   font-size-adjust: 100%;
   font-size: 12px;
-  padding: 0 30px 0 12px;
+  padding: 0 27px 0 7px;
   vertical-align: middle;
+
+  /* Hyphens, from http://blog.kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/
+   * TODO: move to mixin
+   */
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
+
 .tagbox li .delete {
   position: absolute;
   font-family: Arial, sans-serif;
   right: 7px;
-  top: 4px;
+  top: 3px;
   color: #fff;
   z-index: 100;
   cursor: pointer;
-  color: #222;
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////QkJCfEGH6wAAABRJREFUeNpiYGRgACEgBhMgBBBgAABkAAl7vFkJAAAAAElFTkSuQmCC) no-repeat center center;
-  width: 12px;
-  text-indent: -6000px;
-  font-size: 11px;
-  line-height: 12px;
-  height: 12px;
+  width: 16px;
+  font-size: 16px;
+  line-height: 16px;
+  height: 16px;
   text-align: center;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+  opacity: 0.7;
 }
-.tagbox .selected .tag {
-  background: red;
+
+.tagbox li .delete:hover {
+  opacity: 1.0;
+}
+
+.tagbox li:hover .tag {
+  color: white;
+  background-color: gray;
+}
+
+.tagbox li.selected .tag {
+  color: white;
+  background-color: black;
+}
+
+.tagbox li:hover .delete,
+.tagbox li.selected .delete {
+  color: white;
 }

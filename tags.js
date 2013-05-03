@@ -36,7 +36,10 @@
       
       plugin.blocker = $('<div class="autocomplete-blocker"></div>').css({'position' : 'fixed', 'top' : 0, 'left' : 0, 'right' : 0, 'bottom' : 0, 'z-index' : 1999}).hide();
       plugin.box     = $('<div class="autocomplete"></div>').css('z-index', 2000);
+      plugin.tooltip = $('<div class="versal-tooltip versal-tooltip-white versal-tooltip-top versal-tooltip-align-left versal-tooltip-offset"><div class="versal-tooltip-arrow"></div></div>');
+      plugin.box.append(plugin.tooltip);
       plugin.ul      = $('<ul></ul>');
+      plugin.tooltip.hide();
 
       plugin.blocker.click(function(e) {
         plugin.kill();
@@ -158,7 +161,8 @@
       });
       
       if(counter > 0) {
-        plugin.box.append(plugin.ul.show());        
+        plugin.tooltip.append(plugin.ul);        
+        plugin.tooltip.show();
         plugin.blocker.show();
         plugin.open = true;
       }     
@@ -166,7 +170,8 @@
         
     plugin.kill = function() {
       plugin.blocker.hide();
-      plugin.ul.empty().hide();
+      plugin.ul.empty();
+      plugin.tooltip.hide();
       plugin.open = false;
     }
     
@@ -221,7 +226,7 @@
       var pos    = $element.offset();
       var height = $element.innerHeight();
 
-      pos.top = pos.top+height+10;
+      pos.top = pos.top+height;
             
       plugin.box.css(pos);
           
