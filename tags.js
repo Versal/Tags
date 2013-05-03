@@ -137,8 +137,12 @@
       result = result.slice(0,5);
                                   
       $.each(result, function(i, string) {
-                                          
-        var li = $('<li>' + string + '</li>');
+
+        var highlightedString = '<span class="autocomplete-highlight">' +
+          string.substring(0, search.length) +
+          '</span>' + string.substring(search.length);
+
+        var li = $('<li>' + highlightedString + '</li>');
         
         li.click(function() {
           plugin.apply(string)

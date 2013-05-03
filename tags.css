@@ -26,6 +26,15 @@
   background-color: #999;
 }
 
+.autocomplete li .autocomplete-highlight {
+  text-decoration: underline;
+}
+
+.autocomplete li.selected .autocomplete-highlight,
+.autocomplete li.over .autocomplete-highlight {
+  font-weight: bold;
+}
+
 /* tagbox styles */
 .tagbox {
   position: relative;
